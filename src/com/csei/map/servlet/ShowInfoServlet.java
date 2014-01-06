@@ -23,7 +23,6 @@ public class ShowInfoServlet extends HttpServlet{
 		    response.setContentType("text/html;charset=utf-8");
 		    PrintWriter out=response.getWriter();
 		    String name=request.getParameter("pname");
-		    System.out.println(name+"---------");
 		    DbOperate db=new DbOperate();
 		    int id=db.queryIdByName(name);
 		    out.println("<div id='righttitle'>"+name+"</div>");

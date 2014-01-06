@@ -13,7 +13,29 @@ import com.csei.model.MyDataSource;
 
 public class DbOperate {
     private MyDataSource ds=new MyDataSource();
-    
+    public void closeSource(Connection connection,PreparedStatement statement,ResultSet rs){
+        if(rs!= null){
+            try{
+                rs.close() ;
+            }catch(SQLException e){
+                e.printStackTrace() ;
+            }
+        }
+        if(statement!= null){
+            try{
+                statement.close() ;
+            }catch(SQLException e){
+                e.printStackTrace() ;
+            }
+        }
+        if(connection!= null){
+            try{
+                connection.close() ;
+            }catch(SQLException e){
+                e.printStackTrace() ;
+            }
+        }
+    }
 	public int queryIdByName(String name){
 		Connection connection=ds.getConnection();
 		PreparedStatement statement=null;
@@ -29,6 +51,8 @@ public class DbOperate {
 			}
 		}catch (SQLException e) {
 			// TODO: handle exception
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 		return n;
 	}
@@ -52,6 +76,8 @@ public class DbOperate {
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 		return list;
 		
