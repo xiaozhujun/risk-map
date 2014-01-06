@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+body{
+	font-size:13px;
+	margin:0px
+	} 
+#container{
+	width:1200px;
+	height:650px;
+	border:1px solid gray;
+	margin-left: 80px;
+	margin-top: 5px;
+	} 
